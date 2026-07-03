@@ -127,6 +127,19 @@ section{scroll-margin-top:80px}
 .chapter .squiggle{top:-40px;right:-80px;width:420px;opacity:.55}
 .chapter .squiggle path{stroke:var(--gold-light)}
 
+.shot img,.shot video{width:100%;height:100%;object-fit:cover;display:block}
+
+.feature-full{padding:64px 0;border-bottom:1px solid var(--line)}
+.feature-full .feat-text-full{max-width:640px;margin-bottom:36px}
+.shot-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.shot-item{display:flex;flex-direction:column;gap:10px}
+.shot-item .shot{aspect-ratio:16/11}
+.shot-caption{
+  font-family:'Montserrat';font-weight:600;font-size:.85rem;
+  color:var(--slate);text-align:center;
+}
+@media(max-width:760px){.shot-gallery{grid-template-columns:1fr}}
+
 /* ---------- FEATURE ROWS ---------- */
 .feature{
   display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;
@@ -301,6 +314,36 @@ section{scroll-margin-top:80px}
   padding:11px 22px;transition:.2s;
 }
 .email-pill:hover{border-color:var(--gold);color:#b6791a}
+
+/* ---------- FAQ ACCORDION ---------- */
+.faq-group{margin-bottom:38px}
+.faq-group:last-child{margin-bottom:0}
+.faq-group-title{
+  font-family:'Montserrat';font-weight:700;font-size:.8rem;
+  letter-spacing:1.4px;text-transform:uppercase;color:#b6791a;
+  margin-bottom:14px;display:block;
+}
+.faq-item{
+  border-bottom:1px solid var(--line);
+}
+.faq-item summary{
+  list-style:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+  padding:20px 4px;font-family:'Montserrat';font-weight:600;
+  font-size:1rem;color:var(--ink);
+}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item .faq-icon{
+  flex-shrink:0;width:26px;height:26px;border-radius:50%;
+  border:1.5px solid var(--gold);color:#b6791a;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;font-weight:400;transition:transform .25s ease;
+}
+.faq-item[open] .faq-icon{transform:rotate(45deg)}
+.faq-item .faq-answer{
+  padding:0 4px 22px;color:var(--slate);font-size:.98rem;max-width:720px;
+}
+.faq-item .faq-answer a{color:#b6791a;text-decoration:underline}
 
 /* ---------- PLACEHOLDER SECTIONS (tutoriais / faq / links) ---------- */
 .section-head{max-width:620px;margin-bottom:44px}
@@ -485,7 +528,7 @@ footer{background:var(--navy-900);color:#8ea1b2;padding:40px 28px;border-top:1px
 </section>
 
 <!-- CHECKLIST DE BRIEFING -->
-<section class="band">
+<section class="band" id="checklist">
   <div class="wrap">
     <div class="section-head reveal">
       <div class="feat-kicker">Antes do kick-off</div>
@@ -650,13 +693,13 @@ footer{background:var(--navy-900);color:#8ea1b2;padding:40px 28px;border-top:1px
         <p>Enviadas as indicações, se houver validação por liderança ou administradores, inicia-se o período de revisão, edição e aprovação da seleção.</p>
       </div>
       <div class="feat-media">
-        <div class="shot" data-label="Tela &quot;Selecionar indicados&quot;"><span class="badge">Indicações</span></div>
+        <div class="shot"><video src="media/Gif_selec_a_o_de_pares.mp4" autoplay loop muted playsinline></video><span class="badge">Indicações</span></div>
       </div>
     </div>
 
     <div class="feature flip reveal">
       <div class="feat-media">
-        <div class="shot" data-label="Tela &quot;Etapa de avaliação · Pulso&quot;"><span class="badge">Pulso</span></div>
+        <div class="shot"><video src="media/Gif_avaliac_a_o.mp4" autoplay loop muted playsinline></video><span class="badge">Pulso</span></div>
       </div>
       <div class="feat-text">
         <div class="feat-kicker">Programa ativo</div>
@@ -666,15 +709,26 @@ footer{background:var(--navy-900);color:#8ea1b2;padding:40px 28px;border-top:1px
       </div>
     </div>
 
-    <div class="feature reveal">
-      <div class="feat-text">
+    <div class="feature-full reveal">
+      <div class="feat-text-full">
         <div class="feat-kicker">Programa ativo</div>
         <h3>Status e resultados</h3>
         <p>Além do acompanhamento de status ao longo do programa, esta etapa permite acompanhar os resultados da avaliação.</p>
         <p>Os resultados podem ser liberados durante a avaliação, ao final do ciclo ou em qualquer momento definido pela administração, em nível consolidado, com todo o público, ou individual, por participante.</p>
       </div>
-      <div class="feat-media">
-        <div class="shot" data-label="Tela &quot;Resultado consolidado&quot;"><span class="badge">Resultados</span></div>
+      <div class="shot-gallery">
+        <div class="shot-item">
+          <div class="shot"><video src="media/Gif_Status_programa.mp4" autoplay loop muted playsinline></video></div>
+          <span class="shot-caption">Status</span>
+        </div>
+        <div class="shot-item">
+          <div class="shot"><video src="media/Gif_resultado_individual.mp4" autoplay loop muted playsinline></video></div>
+          <span class="shot-caption">Resultado individual</span>
+        </div>
+        <div class="shot-item">
+          <div class="shot"><video src="media/Gif_resultados_consolidados.mp4" autoplay loop muted playsinline></video></div>
+          <span class="shot-caption">Resultado consolidado</span>
+        </div>
       </div>
     </div>
 
@@ -694,16 +748,109 @@ footer{background:var(--navy-900);color:#8ea1b2;padding:40px 28px;border-top:1px
   </div>
 </section>
 
-<!-- FAQ (placeholder) -->
+<!-- FAQ -->
 <section class="band" id="faq">
   <div class="wrap">
     <div class="section-head reveal">
       <h2>Perguntas frequentes</h2>
     </div>
-    <div class="placeholder-card reveal">
-      <div class="ph-icon">?</div>
-      <h4>Espaço reservado</h4>
+
+    <div class="faq-group reveal">
+      <div class="faq-group-title">Antes do projeto começar</div>
+
+      <details class="faq-item">
+        <summary>Quais informações preciso ter em mãos antes do briefing?<span class="faq-icon">+</span></summary>
+        <div class="faq-answer">O ideal é já chegar com os dados do cliente, o objetivo do projeto, o formato da avaliação, o número de avaliados, os prazos e responsáveis, e o canal oficial de contato. Veja a lista completa no <a href="#checklist">checklist de informações necessárias</a>.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>O que preciso alinhar com o TI do cliente?<span class="faq-icon">+</span></summary>
+        <div class="faq-answer">Se houver necessidade de integração via SSO, o questionário de segurança da informação e a liberação de domínio e IP para recebimento de e-mails. Esse alinhamento deve começar cedo, pois a análise de segurança do cliente costuma levar pelo menos uma semana.</div>
+      </details>
     </div>
+
+    <div class="faq-group reveal">
+      <div class="faq-group-title">Configuração e acesso</div>
+
+      <details class="faq-item">
+        <summary>Os comentários dos avaliadores podem ser anônimos?<span class="faq-icon">+</span></summary>
+        <div class="faq-answer">Sim. Na etapa Geral do setup é possível definir se os comentários serão enviados de forma anônima ou identificada.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>É obrigatório que os avaliadores deixem comentários?<span class="faq-icon">+</span></summary>
+        <div class="faq-answer">Não necessariamente. Também na etapa Geral, é definido se os comentários da avaliação são obrigatórios ou opcionais.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Posso incluir avaliadores externos à empresa?<span class="faq-icon">+</span></summary>
+        <div class="faq-answer">Sim. É possível habilitar a indicação de avaliadores externos à organização, com autorização posterior da administração.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Existe um número mínimo ou máximo de avaliadores por avaliado?<span class="faq-icon">+</span></summary>
+        <div class="faq-answer">A quantidade de avaliadores por avaliado é configurável, desconsiderando liderança direta e autoavaliação, que já acontecem automaticamente. Esse número é combinado com o time WeCare no briefing.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Quais idiomas a plataforma suporta?<span class="faq-icon">+</span></summary>
+        <div class="faq-answer">Português, inglês e espanhol.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Quais são as formas de acesso à plataforma?<span class="faq-icon">+</span></summary>
+        <div class="faq-answer">E-mail e senha, código via e-mail, código via SMS, ou SSO, esse último dependendo de integração com o cliente.</div>
+      </details>
+    </div>
+
+    <div class="faq-group reveal">
+      <div class="faq-group-title">Resultados</div>
+
+      <details class="faq-item">
+        <summary>Quando os resultados ficam disponíveis para os participantes?<span class="faq-icon">+</span></summary>
+        <div class="faq-answer">Os resultados podem ser liberados durante o período de avaliação, ao final do ciclo, ou em qualquer outro momento definido pela administração.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Consigo ver os resultados de forma individual ou só consolidada?<span class="faq-icon">+</span></summary>
+        <div class="faq-answer">As duas formas. É possível visualizar os resultados em nível consolidado, considerando todo o público participante, ou de forma individual, por participante.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>A liderança tem acesso aos resultados?<span class="faq-icon">+</span></summary>
+        <div class="faq-answer">Apenas se isso for combinado previamente com o time WeCare.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>O RH tem acesso aos resultados?<span class="faq-icon">+</span></summary>
+        <div class="faq-answer">Apenas se isso for combinado previamente com o time WeCare.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>É possível baixar os resultados?<span class="faq-icon">+</span></summary>
+        <div class="faq-answer">Sim. Tanto o administrador quanto o participante conseguem baixar os resultados em PDF.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Quais são as comunicações que a plataforma envia?<span class="faq-icon">+</span></summary>
+        <div class="faq-answer">No caso de indicação de avaliadores feita pelo participante, notificamos no primeiro e no último dia da etapa. No período de avaliação, o avaliador também recebe um e-mail no primeiro e no último dia. Comunicações intermediárias recomendamos que sejam feitas individualmente pelo cliente ou pelo time Crescimentum, para uma maior adesão.</div>
+      </details>
+    </div>
+
+    <div class="faq-group reveal">
+      <div class="faq-group-title">Depois do lançamento</div>
+
+      <details class="faq-item">
+        <summary>Depois que o setup está pronto, ainda dá para fazer ajustes antes do lançamento?<span class="faq-icon">+</span></summary>
+        <div class="faq-answer">Sim. Após a configuração completa, é feito um alinhamento final para conferência de dados e última chamada para alterações, garantindo um início sem erros.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Se eu precisar mudar alguma informação depois que o programa já começou, com quem eu falo?<span class="faq-icon">+</span></summary>
+        <div class="faq-answer">Pelo canal oficial de contato definido no briefing com o time WeCare, ou diretamente pelos e-mails <a href="mailto:ludiana@sejawecare.com.br">ludiana@sejawecare.com.br</a> e <a href="mailto:aline@sejawecare.com.br">aline@sejawecare.com.br</a>.</div>
+      </details>
+    </div>
+
   </div>
 </section>
 
